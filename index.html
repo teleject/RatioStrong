@@ -1,0 +1,51 @@
+<!doctype>
+<html>
+<head>
+	<title>RatioSTRONG</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script>
+	 $(document).ready(function(){
+		
+		var num1 = $("#dividend").val(),
+			num2 = $("#divisor").val();
+			
+	   $("#dividend").change(function () {
+			$("#quotient").val(function(i,txt) {
+		    	var result = parseInt(num1, 10) / parseInt(num2, 10);
+		    	return (result > 0) ? result : 0; 
+				});
+	        })	
+			.change();
+	
+	
+	});
+	</script>
+</head>
+<body>
+	
+	<h1>RatioSTRONG</h1>
+	<h2>Responsive Web Design, please.</h2>
+	
+	<p>We aren't designing a web site anymore. 
+	<p>It's designing for mobile, tables, desktop web apps now.
+	<p>To keep up with these different screens, different variations, we need to be strong.
+		
+	<form id="ratio">
+		
+		<table>
+			<tr>
+				<td><input type="text" id="dividend" value="460" /></td>
+				<td rowspan="2"><input type="text" id="quotient" value="" /></td>
+				
+			</tr>
+			<tr>
+				<td><input type="text" id="divisor" value="1028" /></td>
+			</tr>
+		</table>
+		
+	</form>
+	
+	
+	
+</body>
+</html>
