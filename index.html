@@ -2,6 +2,16 @@
 <html>
 <head>
 	<title>RatioSTRONG</title>
+	<style>
+	label,textarea {
+		display: block;
+	}
+	
+	textarea {
+		width: 600px;
+		height: 100px;
+	}
+	</style>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script>
 	 $(document).ready(function(){
@@ -24,26 +34,54 @@
 <body>
 	
 	<h1>RatioSTRONG</h1>
-	<h2>Responsive Web Design, please.</h2>
+	<h2>New Math, Same Web</h2>
 	
-	<p>We aren't designing a web site anymore. 
-	<p>It's designing for mobile, tables, desktop web apps now.
-	<p>To keep up with these different screens, different variations, we need to be strong.
 		
 	<form id="ratio">
 		
 		<table>
 			<tr>
-				<td><input type="text" id="dividend" value="460" /></td>
-				<td rowspan="2"><input type="text" id="quotient" value="" /></td>
-				
+				<td>
+					<label for="divided">Target</label>
+					<input type="text" id="dividend" value="460" />
+				</td>
+				<td rowspan="2">
+					<label for="quotient">Result</label>
+					<input type="text" id="quotient" value="" /></td>
 			</tr>
 			<tr>
-				<td><input type="text" id="divisor" value="1028" /></td>
+				<td>
+					<label for="qdivisor">Context</label>
+					<input id="divisor" value="" list="breakpoints" />
+					<datalist id="breakpoints">
+						<option value="480">
+						<option value="800">
+						<option value="1200">
+					</datalist></td>
 			</tr>
 		</table>
 		
+		<input type="reset" value="Clear" />
+		<input type="submit" value="Enter" />
+		
+		<br />
+		<br />
+		<br />
+		<br />
+		
+		<textarea>
+element {
+	/* width is --> Result = Target / Context */
+	width: 98.1%; /* 981 / 1000 */ 
+}
+		</textarea>
+		<input type="button" value="Copy" />
+		
 	</form>
+	
+	<p>We aren't designing a web site anymore. 
+	<p>It's designing for mobile, tables, desktop web apps now.
+	<p>To keep up with these different screens, different variations, we need to be strong. RatioStrong</p>
 	
 	
 	
