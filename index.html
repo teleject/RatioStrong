@@ -11,24 +11,66 @@
 		width: 600px;
 		height: 100px;
 	}
+	#container {
+		position: relative;
+		opacity: 0;
+	}
 	</style>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="ZeroClipboard.js"></script>
 	<script>
-	 $(document).ready(function(){
-		
-		var num1 = $("#dividend").val(),
-			num2 = $("#divisor").val();
-			
-	   $("#dividend").change(function () {
-			$("#quotient").val(function(i,txt) {
-		    	var result = parseInt(num1, 10) / parseInt(num2, 10);
-		    	return (result > 0) ? result : 0; 
-				});
-	        })	
-			.change();
-	
-	
-	});
+		$(document).ready(function(){
+			var clip = new ZeroClipboard.Client();
+
+			$("#dividend, #divisor").change(function (e) {
+				updateResult();
+			});
+			$("form").submit(function (e) {
+				e.preventDefault();
+				updateResult();
+			});
+
+			// wire up copying
+			clip.addEventListener("load", function (client) {
+				// only show button if copying is available.
+				$("#container").css("opacity", "1");
+			});
+			clip.addEventListener("mouseOver", function() {
+				clip.setText($("textarea").text());
+			});
+			clip.glue("copy", "container");
+
+			function updateResult() {
+				var rndedResult = 0,
+					num1 = $("#dividend").val(),
+					num2 = $("#divisor").val();
+
+				var result = parseInt(num1, 10) / parseInt(num2, 10);
+
+				if (result > 0) {
+					// round result
+					var multiple = Math.pow(10, 4);
+					var rndedResult = Math.round(result * multiple) / multiple;
+				}
+
+				$("#quotient").val(rndedResult);
+
+				// update css
+				var css = "element {\n";
+				css += "    width: " + rndedResult + "%; /* " + num1 + " / " + num2 + " */\n";
+				css += "}";
+				$("textarea").html(css);
+			}
+
+			// update on page load
+			updateResult();
+
+			// hide copy button if running locally.
+			if (window.location.protocol !== 'https:' && window.location.protocol !== 'http:') {
+				$('#container').hide();
+			}
+
+		});
 	</script>
 </head>
 <body>
@@ -42,7 +84,7 @@
 		<table>
 			<tr>
 				<td>
-					<label for="divided">Target</label>
+					<label for="dividend">Target</label>
 					<input type="text" id="dividend" value="460" />
 				</td>
 				<td rowspan="2">
@@ -51,7 +93,7 @@
 			</tr>
 			<tr>
 				<td>
-					<label for="qdivisor">Context</label>
+					<label for="divisor">Context</label>
 					<input id="divisor" value="" list="breakpoints" />
 					<datalist id="breakpoints">
 						<option value="480">
@@ -69,14 +111,15 @@
 		<br />
 		<br />
 		
-		<textarea>
+		<textarea id="cssOutput">
 element {
 	/* width is --> Result = Target / Context */
 	width: 98.1%; /* 981 / 1000 */ 
 }
 		</textarea>
-		<input type="button" value="Copy" />
-		
+		<div id="container">
+			<input id="copy" type="button" value="Copy" />
+		</div>
 	</form>
 	
 	<p>We aren't designing a web site anymore. 
