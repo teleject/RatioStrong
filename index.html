@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>RatioSTRONG</title>
+	<link rel="stylesheet" href="jquery.relevant-dropdown.css">
 	<style>
 	label,textarea {
 		display: block;
@@ -15,8 +16,13 @@
 		position: relative;
 		opacity: 0;
 	}
+	#copied {
+		color: green;
+		display: none;
+	}
 	</style>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="modernizr.custom.95508.js"></script>
 	<script src="ZeroClipboard.js"></script>
 	<script>
 		$(document).ready(function(){
@@ -37,6 +43,14 @@
 			});
 			clip.addEventListener("mouseOver", function() {
 				clip.setText($("textarea").text());
+			});
+			clip.addEventListener("onComplete", function() {
+				// indicate text copied.
+				$('#copied').show('slow');
+				// remove notice after a few moments.
+				setTimeout(function() {
+					$('#copied').hide();
+				}, 1500)
 			});
 			clip.glue("copy", "container");
 
@@ -70,6 +84,23 @@
 				$('#container').hide();
 			}
 
+			// polyfills:
+			yepnope({
+				// Safari reports success of list attribute, so doing ghetto detection instead
+				test : (!Modernizr.input.list || (parseInt($.browser.version) > 400)),
+				yep : [
+					'jquery.relevant-dropdown.js' //datalist
+				],
+				callback: function(url, result, key) {
+					if (url === 'jquery.relevant-dropdown.js') {
+						$('#divisor').relevantDropdown({
+							change: function() {
+								updateResult();
+							}
+						});
+					}
+				}
+			});
 		});
 	</script>
 </head>
@@ -119,6 +150,7 @@ element {
 		</textarea>
 		<div id="container">
 			<input id="copy" type="button" value="Copy" />
+			<span id="copied">Copied to clipboard</span>
 		</div>
 	</form>
 	
