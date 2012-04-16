@@ -1,13 +1,15 @@
-<!doctype>
+<!doctype html>
 <html>
 <head>
 	<title>RatioSTRONG</title>
-	<link rel="stylesheet" href="jquery.relevant-dropdown.css">
+	<link rel="stylesheet" href="-/css/jquery.relevant-dropdown.css" />
 	<style>
+	h1 {
+		text-align: center;
+	}
 	label,textarea {
 		display: block;
 	}
-	
 	textarea {
 		width: 600px;
 		height: 100px;
@@ -22,8 +24,8 @@
 	}
 	</style>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="modernizr.custom.95508.js"></script>
-	<script src="ZeroClipboard.js"></script>
+	<script src="-/js/modernizr.custom.95508.js"></script>
+	<script src="-/js/ZeroClipboard.js"></script>
 	<script>
 		$(document).ready(function(){
 			var clip = new ZeroClipboard.Client();
@@ -89,10 +91,10 @@
 				// Safari reports success of list attribute, so doing ghetto detection instead
 				test : (!Modernizr.input.list || (parseInt($.browser.version) > 400)),
 				yep : [
-					'jquery.relevant-dropdown.js' //datalist
+					'-/js/jquery.relevant-dropdown.js' //datalist
 				],
 				callback: function(url, result, key) {
-					if (url === 'jquery.relevant-dropdown.js') {
+					if (url === '-/js/jquery.relevant-dropdown.js') {
 						$('#divisor').relevantDropdown({
 							change: function() {
 								updateResult();
@@ -112,18 +114,12 @@
 		
 	<form id="ratio">
 		
-		<table>
-			<tr>
-				<td>
 					<label for="dividend">Target</label>
 					<input type="text" id="dividend" value="460" />
-				</td>
-				<td rowspan="2">
+
 					<label for="quotient">Result</label>
 					<input type="text" id="quotient" value="" /></td>
-			</tr>
-			<tr>
-				<td>
+
 					<label for="divisor">Context</label>
 					<input id="divisor" value="" list="breakpoints" />
 					<datalist id="breakpoints">
@@ -131,11 +127,11 @@
 						<option value="800">
 						<option value="1200">
 					</datalist></td>
-			</tr>
-		</table>
 		
 		<input type="reset" value="Clear" />
 		<input type="submit" value="Enter" />
+
+
 		
 		<br />
 		<br />
