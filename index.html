@@ -4,8 +4,43 @@
 	<title>RatioSTRONG</title>
 	<link rel="stylesheet" href="-/css/jquery.relevant-dropdown.css" />
 	<style>
+	* {
+		margin: 0;
+		padidng: 0;
+		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+		-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+		box-sizing: border-box;         /* Opera/IE 8+ */
+	}
+
+	body {
+		font-size: 100%;
+
+	}
 	h1 {
+		
+		margin: 0 auto;
+		margin-top: 1em;
+		width: 960px;
 		text-align: center;
+		padding-bottom: 0;
+		background-color: white;
+		
+	}
+	h2 {
+		margin: 0 auto;
+		
+			width: 960px;
+			text-align: center;
+						border-top: 1px solid black;
+			border-left: 1px solid black;
+			border-right: 1px solid black;
+			-webkit-border-top-left-radius: 10px;
+			-webkit-border-top-right-radius: 10px;
+			-moz-border-radius-topleft: 10px;
+			-moz-border-radius-topright: 10px;
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+
 	}
 	label,textarea {
 		display: block;
@@ -14,6 +49,79 @@
 		width: 600px;
 		height: 100px;
 	}
+	
+	br {
+		clear: both;
+	}
+	
+	form {
+		width: 960px;
+		margin: 0 auto;
+		border: 1px solid black;
+		border-top: none;
+		-webkit-border-bottom-right-radius: 10px;
+		-webkit-border-bottom-left-radius: 10px;
+		-moz-border-radius-bottomright: 10px;
+		-moz-border-radius-bottomleft: 10px;
+		border-bottom-right-radius: 10px;
+		border-bottom-left-radius: 10px;
+	}
+	
+	form p {
+		width: 10%;
+		float: left;
+		margin: 1em auto;
+		text-align: center;
+		height: 3em;
+		line-height: 4;
+		font-size: 2em;
+		font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	}
+	
+	form div {
+		width: 20%;
+		float: left;
+		margin: 2em 2em;
+		background: #FAFAFA;
+		border: 1px solid #DAD9C6;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+		-webkit-box-shadow: 0px 0px 0px 4px rgba(115, 115, 115, 0.1);
+		-moz-box-shadow: 0px 0px 0px 4px rgba(115, 115, 115, 0.1);
+		box-shadow: 0px 0px 0px 4px rgba(115, 115, 115, 0.1);
+
+	}
+	
+	form div.last {
+		margin-right: 0;
+	}
+	
+	label {
+		text-align: center;
+		margin: -8px 0 0;
+		display: block;
+		text-shadow: #dddddd 0.05em 0.05em 0em;
+		color: #da6700;
+		font: 600 .8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		text-transform: uppercase;
+		padding-bottom: 10px;
+		border-bottom: 2px dashed #eee;
+		margin-top: 18px;
+	}
+	div > input {
+		text-align: center;
+		width: 100%;
+		margin: 0;
+		padding: .1em 0;
+		border: 0;
+		font: 600 2.5em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;	
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+			
+	}
+	
 	#container {
 		position: relative;
 		opacity: 0;
@@ -21,6 +129,28 @@
 	#copied {
 		color: green;
 		display: none;
+	}
+	
+	input[type="reset"], input[type="submit"], textarea {
+		display: none;
+	}
+
+
+	html, body { 
+		display: table;
+		height: 100%;
+		width: 100%;
+	}
+	body { 
+		display:table-cell; 
+		vertical-align:middle;
+		text-align: center;
+	}
+	body > div {
+		margin: 0 auto;
+
+		transform: translateY(-50%);
+		width: 960px;
 	}
 	</style>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -108,36 +238,49 @@
 </head>
 <body>
 	
-	<h1>RatioSTRONG</h1>
-	<h2>New Math, Same Web</h2>
+	
+	
+		<div class="centered">
+	
+	<header>
+		<hgroup>
+			<h1>RatioSTRONG</h1>
+			<h2>New Math, Same Web</h2>
+		</hgroup>
+	</header>
 	
 		
 	<form id="ratio">
 		
+				<div>
 					<label for="dividend">Target</label>
 					<input type="text" id="dividend" value="460" />
+				</div>
 
-					<label for="quotient">Result</label>
-					<input type="text" id="quotient" value="" /></td>
+				<p>&divide;</p>
 
+				<div>
 					<label for="divisor">Context</label>
-					<input id="divisor" value="" list="breakpoints" />
+					<input id="divisor" value="" list="breakpoints" autofocus  />
 					<datalist id="breakpoints">
 						<option value="480">
 						<option value="800">
 						<option value="1200">
-					</datalist></td>
+					</datalist>
+				</div>
+
+				<p>=</p>
+
+				<div class="last">
+					<label for="quotient">Result</label>
+					<input type="text" id="quotient" value="" /></td>
+				</div>
+
+<br />
 		
 		<input type="reset" value="Clear" />
 		<input type="submit" value="Enter" />
 
-
-		
-		<br />
-		<br />
-		<br />
-		<br />
-		
 		<textarea id="cssOutput">
 element {
 	/* width is --> Result = Target / Context */
@@ -149,12 +292,9 @@ element {
 			<span id="copied">Copied to clipboard</span>
 		</div>
 	</form>
-	
-	<p>We aren't designing a web site anymore. 
-	<p>It's designing for mobile, tables, desktop web apps now.
-	<p>To keep up with these different screens, different variations, we need to be strong. RatioStrong</p>
-	
-	
+
+</div>
+
 	
 </body>
 </html>
