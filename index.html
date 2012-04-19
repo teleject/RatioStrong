@@ -1,91 +1,480 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=640" />
+<head>
+	<title>RatioSTRONG</title>
+	<link rel="stylesheet" href="-/css/jquery.relevant-dropdown.css" />
+	<style>
+	@font-face {
+	    font-family: 'LeagueGothicRegular';
+	    src: url('/-/font/League_Gothic-webfont.eot');
+	    src: url('/-/font/League_Gothic-webfont.eot?#iefix') format('embedded-opentype'),
+	         url('/-/font/League_Gothic-webfont.woff') format('woff'),
+	         url('/-/font/League_Gothic-webfont.ttf') format('truetype'),
+	         url('/-/font/League_Gothic-webfont.svg#LeagueGothicRegular') format('svg');
+	    font-weight: normal;
+	    font-style: normal;
+	}	
+	* {
+		margin: 0;
+		padidng: 0;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	a {
+		text-decoration: none;
+	}
+	html, body { 
+		display: table;
+		height: 100%;
+		width: 100%;
+	}
+	body {
+		font-size: 100%;
+	}
+	body > div {
+		margin: 0 auto;
+		transform: translateY(-50%);
+		width: 960px;
+		margin-top: -6.6%;
+	}
+	h1 a { 
+		color: #66ffff;
+		font: 3.5em "leaguegothicregular","helvetica neue",arial,helvetica,geneva,sans-serif normal;
+		text-shadow: 0px 1px 0px #999, 
+			0px 2px 0px #888, 
+			0px 3px 0px #777, 
+			0px 4px 0px #666, 
+			0px 5px 0px #555,
+			0px 6px 0px #444, 
+			0px 7px 0px #333, 
+			0px 8px 7px #001135, 
+			-1px -1px 0 rgba(0,102,51,.5),
+			1px -1px 0 rgba(0,102,51,.5),
+			-1px 1px 0 rgba(0,102,51,.5),
+			1px 1px 0 rgba(0,102,51,.5),
+			0 4px 4px rgba(0,0,0,.5);
+	}
+	h2 {
+		margin: 0 auto;
+		font: 2.6em "leaguegothicregular","helvetica neue",arial,helvetica,geneva,sans-serif normal;
+		letter-spacing: .1em;
+		color: #66ffff;
+		width: 960px;
+		text-align: center;
+		border-top: 1px solid rgba(115,160,255,.5);	
+		border-left: 1px solid rgba(115,160,255,.5);
+		-webkit-border-top-left-radius: 10px;
+		-webkit-border-top-right-radius: 10px;
+		-moz-border-radius-topleft: 10px;
+		-moz-border-radius-topright: 10px;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+		border-right: 1px solid #36383D;
+		text-transform: lowercase;
+		text-shadow: -1px -1px 0 rgba(0,102,51,.5),
+			1px -1px 0 rgba(0,102,51,.5),
+			-1px 1px 0 rgba(0,102,51,.5),
+			1px 1px 0 rgba(0,102,51,.5);
+		background-image: url(-/img/bkgd-noise.png);
+	}
+	label,textarea {
+		display: block;
+	}
+	textarea {
+		width: 600px;
+	}
 
-    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
-    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+	form {
+		width: 960px;
+		margin: 0 auto;
+		border: 1px solid rgba(115,160,255,.5);
+		border-top: none;
+		-webkit-border-bottom-right-radius: 10px;
+		-webkit-border-bottom-left-radius: 10px;
+		-moz-border-radius-bottomright: 10px;
+		-moz-border-radius-bottomleft: 10px;
+		border-bottom-right-radius: 10px;
+		border-bottom-left-radius: 10px;
+		border-bottom:1px solid #36383D;
+		border-right:1px solid #36383D;
+		background-image: url(-/img/bkgd-noise.png);
+	}
+	
+	form p {
+		font: 3em/1.5 "leaguegothicregular","helvetica neue",arial,helvetica,geneva,sans-serif  bold;
+		text-align: center;	
+		text-shadow: -1px -1px 0 rgba(0,102,51,.5),
+			1px -1px 0 rgba(0,102,51,.5),
+			-1px 1px 0 rgba(0,102,51,.5),
+			1px 1px 0 rgba(0,102,51,.5),
+			0 4px 4px rgba(0,0,0,.5);
+		width: 10%;
+		height: 3em;
+		float: left;
+		margin: 1em auto 0;
+		padding: 0;
+		color: #7afff5;
+	}
+	
+	form div {
+		width: 20%;
+		float: left;
+		margin: 2em 2em;
+		background: #fff;
+		background: rgba(255,255,255,.8);
+		border: 1px solid #DAD9C6;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+		-webkit-box-shadow:  0 0 0 1px rgba(255,255,255,0), 
+			0px 0px 20px rgba(0, 33, 0, 0.9), 
+			0px 0px 11px rgba(0, 33, 0, 0.5),
+			0px 0px 0px 4px rgba(0, 76, 37, 0.5);
+		-moz-box-shadow: 0 0 0 1px rgba(255,255,255,0), 
+			0px 0px 20px rgba(0, 33, 0, 0.9), 
+			0px 0px 11px rgba(0, 33, 0, 0.5),
+			0px 0px 0px 4px rgba(0, 76, 37, 0.5);
+		box-shadow: 0 0 0 1px rgba(255,255,255,0), 
+			0px 0px 20px rgba(0, 33, 0, 0.9), 
+			0px 0px 11px rgba(0, 33, 0, 0.5),
+			0px 0px 0px 4px rgba(0, 76, 37, 0.5);
+	}
+	form div:hover {
+		-webkit-box-shadow:  0 0 1px rgba(255,255,255,.8), 
+			0px 0px 2px rgba(0, 33, 0, 0.9), 
+			0px 0px 5px rgba(0, 33, 0, 0.5), 
+			0px 0px 0px 4px rgba(0, 76, 37, 0.5);
+		-moz-box-shadow: 0 0 1px rgba(255,255,255,.8), 
+			0px 0px 2px rgba(0, 33, 0, 0.9), 
+			0px 0px 5px rgba(0, 33, 0, 0.5), 
+			0px 0px 0px 4px rgba(0, 76, 37, 0.5);
+		box-shadow: 0 0 0 1px rgba(255,255,255,.8), 
+			0px 0px 2px rgba(0, 33, 0, 0.9), 
+			0px 0px 5px rgba(0, 33, 0, 0.5), 
+			0px 0px 0px 4px rgba(0, 76, 37, 0.5);
+		-webkit-transition: all 0.3s ease-out;
+	}
+	form div.last {
+		margin-right: 0;
+	}
+	form:after  {
+		content: "."; 
+		display: block; 
+		height: 0; 
+		clear: both;
+		visibility: hidden;
+	}
+	label {
+		font: 600 .8em Georgia;
+		text-transform: uppercase;
+		text-shadow: #dddddd 1px 0px 0em;
+		text-align: center;
+		margin: 10px 0 0;
+		padding-bottom: 10px;
+		display: block;
+		color: #da6700;
+		border-bottom: 2px dashed #da6700;
+	}
+	div > input {
+		font: 4em "leaguegothicregular","helvetica neue",arial,helvetica,geneva,sans-serif;	
+		text-align: center;
+		width: 100%;
+		border: 0;
+		padding: .1em 0;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+		background: rgba(255,255,255,.9);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), 
+			color-stop(50%,#000202), 
+			color-stop(100%,#ffffff)); 
+		background: -webkit-linear-gradient(top, #000000 0%,#000202 50%,#ffffff 100%); 
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	
+	#container {
+		position: relative;
+		opacity: 0;
+	}
+	#copied {
+		color: green;
+		display: none;
+	}
+	input[type="reset"], input[type="submit"], textarea, #container {
+		display: none;
+	}
 
-    <script type="text/javascript" src="javascripts/modernizr.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $('#main_content').headsmart()
-      })
-    </script>
-    <title>Ratiostrong by teleject</title>
-  </head>
+	body { 
+		display:table-cell; 
+		vertical-align:middle;
+		text-align: center;
+		background-image:
+			-webkit-radial-gradient(50% 50%, rgba(0, 204, 125, 0.00), rgba(0, 51, 0, 0.6)),
+			-webkit-radial-gradient(50% 50%, rgba(0, 204, 125, 0.00), rgba(0, 00, 0, 0.7)),
+			url(-/img/bkgd-noise.png),
+			url(-/img/bkgd.png),		
+			-webkit-gradient(linear, 0 0, 0 100%, 
+			    color-stop(0.05, rgba(255, 255, 255, .5)), 
+			    color-stop(0.05, rgba(255, 255, 255, 0.1)), 
+			    color-stop(0.5, rgba(255, 255, 255, 0.1)),  
+			    color-stop(0.5, rgba(255, 255, 255, .5)),  
+			    color-stop(0.55, rgba(255, 255, 255, .5)), 
+			    color-stop(0.55, rgba(255, 255, 255, 0))),
+			-webkit-gradient(linear, 0 0, 100% 0, 
+			    color-stop(0.05, rgba(255, 255, 255, .5)), 
+			    color-stop(0.05, rgba(255, 255, 255, 0.1)), 
+			    color-stop(0.5, rgba(255, 255, 255, 0.1)),  
+			    color-stop(0.5, rgba(255, 255, 255, .5)),  
+			    color-stop(0.55, rgba(255, 255, 255, .5)), 
+			    color-stop(0.55, rgba(255, 255, 255, 0)));
+		background-image: 
+			-moz-radial-gradient(center, rgba(0, 204, 125, 0.00), rgba(0, 51, 0, 0.6)),
+			-moz-radial-gradient(center, rgba(0, 204, 125, 0.00), rgba(0, 00, 0, 0.7)),
+			url(-/img/bkgd-noise.png),
+			url(-/img/bkgd.png),
+			-moz-linear-gradient(90deg,  
+			    rgba(255, 255, 255, 1) 5%, 
+			    rgba(255, 255, 255, .25) 5%,
+			    rgba(255, 255, 255, .25) 50%, 
+			    rgba(255, 255, 255, 1) 50%, 
+			    rgba(255, 255, 255, 1) 55%, 
+			    rgba(255, 255, 255, 0) 55%, 
+			    rgba(255, 255, 255, 0)),
+			-moz-linear-gradient(0,   
+			    rgba(255, 255, 255, 1)5%, 
+			    rgba(255, 255, 255, .25) 5%,
+			    rgba(255, 255, 255, .25) 50%, 
+			    rgba(255, 255, 255, 1) 50%, 
+			    rgba(255, 255, 255, 1) 55%, 
+			    rgba(255, 255, 255, 0) 55%, 
+			    rgba(255, 255, 255, 0));
+		background-image: 
+			-ms-radial-gradient(center, rgba(0, 204, 125, 0.00), rgba(0, 51, 0, 0.6)),
+			-ms-radial-gradient(center, rgba(0, 204, 125, 0.00), rgba(0, 00, 0, 0.7)),
+			url(-/img/bkgd-noise.png),
+			url(-/img/bkgd.png),
+			-ms-linear-gradient(90deg,  
+			    rgba(255, 255, 255, 1) 5%, 
+			    rgba(255, 255, 255, .25) 5%,
+			    rgba(255, 255, 255, .25) 50%, 
+			    rgba(255, 255, 255, 1) 50%, 
+			    rgba(255, 255, 255, 1) 55%, 
+			    rgba(255, 255, 255, 0) 55%, 
+			    rgba(255, 255, 255, 0)),
+			-ms-linear-gradient(0deg,   
+			    rgba(255, 255, 255, 1)5%, 
+			    rgba(255, 255, 255, .25) 5%,
+			    rgba(255, 255, 255, .25) 50%, 
+			    rgba(255, 255, 255, 1) 50%, 
+			    rgba(255, 255, 255, 1) 55%, 
+			    rgba(255, 255, 255, 0) 55%, 
+			    rgba(255, 255, 255, 0));
+		background-image: 
+			-o-radial-gradient(center, rgba(0, 204, 125, 0.00), rgba(0, 51, 0, 0.6)),
+			-o-radial-gradient(center, rgba(0, 204, 125, 0.00), rgba(0, 00, 0, 0.7)),
+			url(-/img/bkgd-noise.png),
+			url(-/img/bkgd.png),
+			-o-linear-gradient(90deg,  
+			    rgba(255, 255, 255, 1) 5%, 
+			    rgba(255, 255, 255, .25) 5%,
+			    rgba(255, 255, 255, .25) 50%, 
+			    rgba(255, 255, 255, 1) 50%, 
+			    rgba(255, 255, 255, 1) 55%, 
+			    rgba(255, 255, 255, 0) 55%, 
+			    rgba(255, 255, 255, 0)),
+			-o-linear-gradient(0,   
+			    rgba(255, 255, 255, 1)5%, 
+			    rgba(255, 255, 255, .25) 5%,
+			    rgba(255, 255, 255, .25) 50%, 
+			    rgba(255, 255, 255, 1) 50%, 
+			    rgba(255, 255, 255, 1) 55%, 
+			    rgba(255, 255, 255, 0) 55%, 
+			    rgba(255, 255, 255, 0));
+		background-image:
+			radial-gradient(center, rgba(0, 204, 125, 0.00), rgba(0, 51, 0, 0.6)),
+			radial-gradient(center, rgba(0, 204, 125, 0.00), rgba(0, 00, 0, 0.7)),
+			url(-/img/bkgd-noise.png),
+			url(-/img/bkgd.png),
+			linear-gradient(90deg,  
+			    rgba(255, 255, 255, 1) 5%, 
+			    rgba(255, 255, 255, .25) 5%,
+			    rgba(255, 255, 255, .25) 50%, 
+			    rgba(255, 255, 255, 1) 50%, 
+			    rgba(255, 255, 255, 1) 55%, 
+			    rgba(255, 255, 255, 0) 55%, 
+			    rgba(255, 255, 255, 0)),
+			linear-gradient(0,   
+			    rgba(255, 255, 255, 1)5%, 
+			    rgba(255, 255, 255, .25) 5%,
+			    rgba(255, 255, 255, .25) 50%, 
+			    rgba(255, 255, 255, 1) 50%, 
+			    rgba(255, 255, 255, 1) 55%, 
+			    rgba(255, 255, 255, 0) 55%, 
+			    rgba(255, 255, 255, 0));
+			background-color: #0db85f; 		
+			background-size:  100%, 100%, contain, contain, 25px 25px, 25px 25px;
+			background-position: 50%;
+	}
 
-  <body>
-    <a id="forkme_banner" href="https://github.com/teleject/RatioStrong">Fork Me on GitHub</a>
-    <div class="shell">
+	::selection, ::-moz-selection {
+		background: #ff00cc; /* Safari */
+	}
 
-      <header>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <h1>Ratiostrong</h1>
-            <h2>new math, same web</h2>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-      </header>
+	</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="-/js/modernizr.custom.95508.js"></script>
+	<script src="-/js/ZeroClipboard.js"></script>
+	<script>
+		$(document).ready(function(){
+			var clip = new ZeroClipboard.Client();
 
-      <section id="downloads">
-        <span class="inner">
-          <a href="https://github.com/teleject/RatioStrong/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/teleject/RatioStrong/tarball/master" class="tgz"><em>download</em> .TGZ</a>
-        </span>
-      </section>
+			$("#dividend, #divisor").change(function (e) {
+				updateResult();
+			});
+			$("form").submit(function (e) {
+				e.preventDefault();
+				updateResult();
+			});
 
-      <span class="banner-fix"></span>
+			// wire up copying
+			clip.addEventListener("load", function (client) {
+				// only show button if copying is available.
+				$("#container").css("opacity", "1");
+			});
+			clip.addEventListener("mouseOver", function() {
+				clip.setText($("textarea").text());
+			});
+			clip.addEventListener("onComplete", function() {
+				// indicate text copied.
+				$('#copied').show('slow');
+				// remove notice after a few moments.
+				setTimeout(function() {
+					$('#copied').hide();
+				}, 1500)
+			});
+			clip.glue("copy", "container");
 
-      <section id="main_content">
-        <h3>Welcome to GitHub Pages.</h3>
+			function updateResult() {
+				var rndedResult = 0,
+					num1 = $("#dividend").val(),
+					num2 = $("#divisor").val();
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+				var result = parseInt(num1, 10) / parseInt(num2, 10);
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+				if (result > 0) {
+					// round result
+					var multiple = Math.pow(10, 4);
+					var rndedResult = Math.round(result * multiple) / multiple;
+				}
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+				$("#quotient").val(rndedResult);
 
-<h3>Designer Templates</h3>
+				// update css
+				var css = "element {\n";
+				css += "    width: " + rndedResult + "%; /* " + num1 + " / " + num2 + " */\n";
+				css += "}";
+				$("textarea").html(css);
+			}
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+			// update on page load
+			updateResult();
 
-<h3>Rather Drive Stick?</h3>
+			// hide copy button if running locally.
+			if (window.location.protocol !== 'https:' && window.location.protocol !== 'http:') {
+				$('#container').hide();
+			}
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+			// polyfills:
+			yepnope({
+				// Safari reports success of list attribute, so doing ghetto detection instead
+				test : (!Modernizr.input.list || (parseInt($.browser.version) > 400)),
+				yep : [
+					'-/js/jquery.relevant-dropdown.js' //datalist
+				],
+				callback: function(url, result, key) {
+					if (url === '-/js/jquery.relevant-dropdown.js') {
+						$('#divisor').relevantDropdown({
+							change: function() {
+								updateResult();
+							}
+						});
+					}
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	
+	
+	
+		<div class="centered">
+	
+	<header>
+		<hgroup>
+			<h1><a href="/">RatioSTRONG</a></h1>
+			<h2>New Math, Same Web</h2>
+		</hgroup>
+	</header>
+	
+		
+	<form id="ratio">
+		
+				<div>
+					<label for="dividend">Target</label>
+					<input type="text" id="dividend" value="460" />
+				</div>
 
-<h3>Authors and Contributors</h3>
+				<p>&divide;</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+				<div>
+					<label for="divisor">Context</label>
+					<input id="divisor" value="" list="breakpoints" autofocus  />
+					<datalist id="breakpoints">
+						<option value="480">
+						<option value="800">
+						<option value="1200">
+					</datalist>
+				</div>
 
-<h3>Support or Contact</h3>
+				<p>=</p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact support@github.com and we’ll help you sort it out.</p>
-      </section>
+				<div class="last">
+					<label for="quotient">Result</label>
+					<input type="text" id="quotient" value="" /></td>
+				</div>
+		
+		<input type="reset" value="Clear" />
+		<input type="submit" value="Enter" />
 
-      <footer>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <p>this project by <a href="https://github.com/teleject">teleject</a> can be found on <a href="https://github.com/teleject/RatioStrong">GitHub</a></p>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
-        <span class="octocat"></span>
-      </footer>
+		<textarea id="cssOutput">
+element {
+	/* width is --> Result = Target / Context */
+	width: 98.1%; /* 981 / 1000 */ 
+}
+		</textarea>
+		<div id="container">
+			<input id="copy" type="button" value="Copy" />
+			<span id="copied">Copied to clipboard</span>
+		</div>
+	</form>
 
-    </div>
+</div>
+<script type="text/javascript">
 
-    
-  </body>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-408491-6']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	
+</body>
 </html>
