@@ -3,7 +3,11 @@
 <head>
 	<title>RatioSTRONG</title>
 	<link rel="stylesheet" href="-/css/jquery.relevant-dropdown.css" />
+	<meta name="viewport" content="width=device-width">
 	<style>
+	* {
+		box-sizing: border-box;
+	}
 	@font-face {
 	    font-family: 'LeagueGothicRegular';
 	    src: url('/-/font/League_Gothic-webfont.eot');
@@ -14,314 +18,312 @@
 	    font-weight: normal;
 	    font-style: normal;
 	}	
-	* {
-		margin: 0;
-		padidng: 0;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-	}
-	a {
-		text-decoration: none;
-	}
-	html, body { 
-		display: table;
-		height: 100%;
-		width: 100%;
-	}
 	body {
-		font-size: 100%;
-	}
-	body > div {
-		margin: 0 auto;
-		transform: translateY(-50%);
-		width: 960px;
-		margin-top: -6.6%;
-	}
-	h1 a { 
-		color: #66ffff;
-		font: 3.5em "leaguegothicregular","helvetica neue",arial,helvetica,geneva,sans-serif normal;
-		text-shadow: 0px 1px 0px #999, 
-			0px 2px 0px #888, 
-			0px 3px 0px #777, 
-			0px 4px 0px #666, 
-			0px 5px 0px #555,
-			0px 6px 0px #444, 
-			0px 7px 0px #333, 
-			0px 8px 7px #001135, 
-			-1px -1px 0 rgba(0,102,51,.5),
-			1px -1px 0 rgba(0,102,51,.5),
-			-1px 1px 0 rgba(0,102,51,.5),
-			1px 1px 0 rgba(0,102,51,.5),
-			0 4px 4px rgba(0,0,0,.5);
-	}
-	h2 {
-		margin: 0 auto;
-		font: 2.6em "leaguegothicregular","helvetica neue",arial,helvetica,geneva,sans-serif normal;
-		letter-spacing: .1em;
-		color: #66ffff;
-		width: 960px;
-		text-align: center;
-		border-top: 1px solid rgba(115,160,255,.5);	
-		border-left: 1px solid rgba(115,160,255,.5);
-		-webkit-border-top-left-radius: 10px;
-		-webkit-border-top-right-radius: 10px;
-		-moz-border-radius-topleft: 10px;
-		-moz-border-radius-topright: 10px;
-		border-top-left-radius: 10px;
-		border-top-right-radius: 10px;
-		border-right: 1px solid #36383D;
-		text-transform: lowercase;
-		text-shadow: -1px -1px 0 rgba(0,102,51,.5),
-			1px -1px 0 rgba(0,102,51,.5),
-			-1px 1px 0 rgba(0,102,51,.5),
-			1px 1px 0 rgba(0,102,51,.5);
-		background-image: url(-/img/bkgd-noise.png);
-	}
-	label,textarea {
-		display: block;
-	}
-	textarea {
-		width: 600px;
-	}
+  background-color: #fff;
+  padding:50px;
+  font: 100% "LeagueGothicRegular", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color:#595959;
+  font-weight:400;
+}
 
-	form {
-		width: 960px;
-		margin: 0 auto;
-		border: 1px solid rgba(115,160,255,.5);
-		border-top: none;
-		-webkit-border-bottom-right-radius: 10px;
-		-webkit-border-bottom-left-radius: 10px;
-		-moz-border-radius-bottomright: 10px;
-		-moz-border-radius-bottomleft: 10px;
-		border-bottom-right-radius: 10px;
-		border-bottom-left-radius: 10px;
-		border-bottom:1px solid #36383D;
-		border-right:1px solid #36383D;
-		background-image: url(-/img/bkgd-noise.png);
-	}
-	
-	form p {
-		font: 3em/1.5 "leaguegothicregular","helvetica neue",arial,helvetica,geneva,sans-serif  bold;
-		text-align: center;	
-		text-shadow: -1px -1px 0 rgba(0,102,51,.5),
-			1px -1px 0 rgba(0,102,51,.5),
-			-1px 1px 0 rgba(0,102,51,.5),
-			1px 1px 0 rgba(0,102,51,.5),
-			0 4px 4px rgba(0,0,0,.5);
-		width: 10%;
-		height: 3em;
-		float: left;
-		margin: 1em auto 0;
-		padding: 0;
-		color: #7afff5;
-	}
-	
-	form div {
-		width: 20%;
-		float: left;
-		margin: 2em 2em;
-		background: #fff;
-		background: rgba(255,255,255,.8);
-		border: 1px solid #DAD9C6;
-		-webkit-border-radius: 10px;
-		-moz-border-radius: 10px;
-		border-radius: 10px;
-		-webkit-box-shadow:  0 0 0 1px rgba(255,255,255,0), 
-			0px 0px 20px rgba(0, 33, 0, 0.9), 
-			0px 0px 11px rgba(0, 33, 0, 0.5),
-			0px 0px 0px 4px rgba(0, 76, 37, 0.5);
-		-moz-box-shadow: 0 0 0 1px rgba(255,255,255,0), 
-			0px 0px 20px rgba(0, 33, 0, 0.9), 
-			0px 0px 11px rgba(0, 33, 0, 0.5),
-			0px 0px 0px 4px rgba(0, 76, 37, 0.5);
-		box-shadow: 0 0 0 1px rgba(255,255,255,0), 
-			0px 0px 20px rgba(0, 33, 0, 0.9), 
-			0px 0px 11px rgba(0, 33, 0, 0.5),
-			0px 0px 0px 4px rgba(0, 76, 37, 0.5);
-	}
-	form div:hover {
-		-webkit-box-shadow:  0 0 1px rgba(255,255,255,.8), 
-			0px 0px 2px rgba(0, 33, 0, 0.9), 
-			0px 0px 5px rgba(0, 33, 0, 0.5), 
-			0px 0px 0px 4px rgba(0, 76, 37, 0.5);
-		-moz-box-shadow: 0 0 1px rgba(255,255,255,.8), 
-			0px 0px 2px rgba(0, 33, 0, 0.9), 
-			0px 0px 5px rgba(0, 33, 0, 0.5), 
-			0px 0px 0px 4px rgba(0, 76, 37, 0.5);
-		box-shadow: 0 0 0 1px rgba(255,255,255,.8), 
-			0px 0px 2px rgba(0, 33, 0, 0.9), 
-			0px 0px 5px rgba(0, 33, 0, 0.5), 
-			0px 0px 0px 4px rgba(0, 76, 37, 0.5);
-		-webkit-transition: all 0.3s ease-out;
-	}
-	form div.last {
-		margin-right: 0;
-	}
-	form:after  {
-		content: "."; 
-		display: block; 
-		height: 0; 
-		clear: both;
-		visibility: hidden;
-	}
-	label {
-		font: 600 .8em Georgia;
-		text-transform: uppercase;
-		text-shadow: #dddddd 1px 0px 0em;
-		text-align: center;
-		margin: 10px 0 0;
-		padding-bottom: 10px;
-		display: block;
-		color: #da6700;
-		border-bottom: 2px dashed #da6700;
-	}
-	div > input {
-		font: 4em "leaguegothicregular","helvetica neue",arial,helvetica,geneva,sans-serif;	
-		text-align: center;
-		width: 100%;
-		border: 0;
-		padding: .1em 0;
-		-webkit-border-radius: 10px;
-		-moz-border-radius: 10px;
-		border-radius: 10px;
-		background: rgba(255,255,255,.9);
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), 
-			color-stop(50%,#000202), 
-			color-stop(100%,#ffffff)); 
-		background: -webkit-linear-gradient(top, #000000 0%,#000202 50%,#ffffff 100%); 
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-	}
-	
-	#container {
-		position: relative;
-		opacity: 0;
-	}
-	#copied {
-		color: green;
-		display: none;
-	}
-	input[type="reset"], input[type="submit"], textarea, #container {
-		display: none;
-	}
+.ratio__block {
+	margin: 0 0 2em 0;
+}
 
-	body { 
-		display:table-cell; 
-		vertical-align:middle;
-		text-align: center;
-		background-image:
-			-webkit-radial-gradient(50% 50%, rgba(0, 204, 125, 0.00), rgba(0, 51, 0, 0.6)),
-			-webkit-radial-gradient(50% 50%, rgba(0, 204, 125, 0.00), rgba(0, 00, 0, 0.7)),
-			url(-/img/bkgd-noise.png),
-			url(-/img/bkgd.png),		
-			-webkit-gradient(linear, 0 0, 0 100%, 
-			    color-stop(0.05, rgba(255, 255, 255, .5)), 
-			    color-stop(0.05, rgba(255, 255, 255, 0.1)), 
-			    color-stop(0.5, rgba(255, 255, 255, 0.1)),  
-			    color-stop(0.5, rgba(255, 255, 255, .5)),  
-			    color-stop(0.55, rgba(255, 255, 255, .5)), 
-			    color-stop(0.55, rgba(255, 255, 255, 0))),
-			-webkit-gradient(linear, 0 0, 100% 0, 
-			    color-stop(0.05, rgba(255, 255, 255, .5)), 
-			    color-stop(0.05, rgba(255, 255, 255, 0.1)), 
-			    color-stop(0.5, rgba(255, 255, 255, 0.1)),  
-			    color-stop(0.5, rgba(255, 255, 255, .5)),  
-			    color-stop(0.55, rgba(255, 255, 255, .5)), 
-			    color-stop(0.55, rgba(255, 255, 255, 0)));
-		background-image: 
-			-moz-radial-gradient(center, rgba(0, 204, 125, 0.00), rgba(0, 51, 0, 0.6)),
-			-moz-radial-gradient(center, rgba(0, 204, 125, 0.00), rgba(0, 00, 0, 0.7)),
-			url(-/img/bkgd-noise.png),
-			url(-/img/bkgd.png),
-			-moz-linear-gradient(90deg,  
-			    rgba(255, 255, 255, 1) 5%, 
-			    rgba(255, 255, 255, .25) 5%,
-			    rgba(255, 255, 255, .25) 50%, 
-			    rgba(255, 255, 255, 1) 50%, 
-			    rgba(255, 255, 255, 1) 55%, 
-			    rgba(255, 255, 255, 0) 55%, 
-			    rgba(255, 255, 255, 0)),
-			-moz-linear-gradient(0,   
-			    rgba(255, 255, 255, 1)5%, 
-			    rgba(255, 255, 255, .25) 5%,
-			    rgba(255, 255, 255, .25) 50%, 
-			    rgba(255, 255, 255, 1) 50%, 
-			    rgba(255, 255, 255, 1) 55%, 
-			    rgba(255, 255, 255, 0) 55%, 
-			    rgba(255, 255, 255, 0));
-		background-image: 
-			-ms-radial-gradient(center, rgba(0, 204, 125, 0.00), rgba(0, 51, 0, 0.6)),
-			-ms-radial-gradient(center, rgba(0, 204, 125, 0.00), rgba(0, 00, 0, 0.7)),
-			url(-/img/bkgd-noise.png),
-			url(-/img/bkgd.png),
-			-ms-linear-gradient(90deg,  
-			    rgba(255, 255, 255, 1) 5%, 
-			    rgba(255, 255, 255, .25) 5%,
-			    rgba(255, 255, 255, .25) 50%, 
-			    rgba(255, 255, 255, 1) 50%, 
-			    rgba(255, 255, 255, 1) 55%, 
-			    rgba(255, 255, 255, 0) 55%, 
-			    rgba(255, 255, 255, 0)),
-			-ms-linear-gradient(0deg,   
-			    rgba(255, 255, 255, 1)5%, 
-			    rgba(255, 255, 255, .25) 5%,
-			    rgba(255, 255, 255, .25) 50%, 
-			    rgba(255, 255, 255, 1) 50%, 
-			    rgba(255, 255, 255, 1) 55%, 
-			    rgba(255, 255, 255, 0) 55%, 
-			    rgba(255, 255, 255, 0));
-		background-image: 
-			-o-radial-gradient(center, rgba(0, 204, 125, 0.00), rgba(0, 51, 0, 0.6)),
-			-o-radial-gradient(center, rgba(0, 204, 125, 0.00), rgba(0, 00, 0, 0.7)),
-			url(-/img/bkgd-noise.png),
-			url(-/img/bkgd.png),
-			-o-linear-gradient(90deg,  
-			    rgba(255, 255, 255, 1) 5%, 
-			    rgba(255, 255, 255, .25) 5%,
-			    rgba(255, 255, 255, .25) 50%, 
-			    rgba(255, 255, 255, 1) 50%, 
-			    rgba(255, 255, 255, 1) 55%, 
-			    rgba(255, 255, 255, 0) 55%, 
-			    rgba(255, 255, 255, 0)),
-			-o-linear-gradient(0,   
-			    rgba(255, 255, 255, 1)5%, 
-			    rgba(255, 255, 255, .25) 5%,
-			    rgba(255, 255, 255, .25) 50%, 
-			    rgba(255, 255, 255, 1) 50%, 
-			    rgba(255, 255, 255, 1) 55%, 
-			    rgba(255, 255, 255, 0) 55%, 
-			    rgba(255, 255, 255, 0));
-		background-image:
-			radial-gradient(center, rgba(0, 204, 125, 0.00), rgba(0, 51, 0, 0.6)),
-			radial-gradient(center, rgba(0, 204, 125, 0.00), rgba(0, 00, 0, 0.7)),
-			url(-/img/bkgd-noise.png),
-			url(-/img/bkgd.png),
-			linear-gradient(90deg,  
-			    rgba(255, 255, 255, 1) 5%, 
-			    rgba(255, 255, 255, .25) 5%,
-			    rgba(255, 255, 255, .25) 50%, 
-			    rgba(255, 255, 255, 1) 50%, 
-			    rgba(255, 255, 255, 1) 55%, 
-			    rgba(255, 255, 255, 0) 55%, 
-			    rgba(255, 255, 255, 0)),
-			linear-gradient(0,   
-			    rgba(255, 255, 255, 1)5%, 
-			    rgba(255, 255, 255, .25) 5%,
-			    rgba(255, 255, 255, .25) 50%, 
-			    rgba(255, 255, 255, 1) 50%, 
-			    rgba(255, 255, 255, 1) 55%, 
-			    rgba(255, 255, 255, 0) 55%, 
-			    rgba(255, 255, 255, 0));
-			background-color: #0db85f; 		
-			background-size:  100%, 100%, contain, contain, 25px 25px, 25px 25px;
-			background-position: 50%;
-	}
+input[type="text"] {
+	border:none;
+	width: 100%;
+	font-size: 2em;
+	padding: .3em;
+	margin: 0;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+	transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+input[type="text"]:hover {
+		box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+	transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
 
-	::selection, ::-moz-selection {
-		background: #ff00cc; /* Safari */
-	}
 
+
+input[type="submit"], input[type="reset"] {
+	font-size: 2em;
+	width: 49%;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+}
+
+textarea {
+	width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color:#222;
+  margin:0 0 1em 0;
+}
+
+p, ul, ol, table, pre, dl {
+  margin:0 0 1em 0;
+}
+
+h1, h2, h3 {
+
+  line-height:1.61803398875;
+}
+
+h1 {
+  font-size:28px;
+  font-weight: 500;
+}
+
+h2 {
+  color:#393939;
+  font-weight: 500;
+}
+
+h3, h4, h5, h6 {
+  color:#494949;
+  font-weight: 500;
+}
+
+a {
+  color:#39c;
+  text-decoration:none;
+}
+
+a:hover {
+  color:#069;
+}
+
+a small {
+  font-size:11px;
+  color:#777;
+  margin-top:-0.3em;
+  display:block;
+}
+
+a:hover small {
+  color:#777;
+}
+
+.wrapper {
+  width:860px;
+  margin:0 auto;
+}
+
+blockquote {
+  border-left:1px solid #e5e5e5;
+  margin:0;
+  padding:0 0 0 20px;
+  font-style:italic;
+}
+
+code, pre {
+  font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
+  color:#333;
+  font-size:12px;
+}
+
+pre {
+  padding:8px 15px;
+  background: #f8f8f8;
+  border-radius:5px;
+  border:1px solid #e5e5e5;
+  overflow-x: auto;
+}
+
+table {
+  width:100%;
+  border-collapse:collapse;
+}
+
+th, td {
+  text-align:left;
+  padding:5px 10px;
+  border-bottom:1px solid #e5e5e5;
+}
+
+dt {
+  color:#444;
+  font-weight:500;
+}
+
+th {
+  color:#444;
+}
+
+img {
+  max-width:100%;
+}
+
+header {
+  width:270px;
+  float:left;
+  position:fixed;
+  -webkit-font-smoothing:subpixel-antialiased;
+}
+
+header ul {
+  list-style:none;
+  height:40px;
+  padding:0;
+  background: #f4f4f4;
+  border-radius:5px;
+  border:1px solid #e0e0e0;
+  width:270px;
+}
+
+header li {
+  width:89px;
+  float:left;
+  border-right:1px solid #e0e0e0;
+  height:40px;
+}
+
+header li:first-child a {
+  border-radius:5px 0 0 5px;
+}
+
+header li:last-child a {
+  border-radius:0 5px 5px 0;
+}
+
+header ul a {
+  line-height:1;
+  font-size:11px;
+  color:#999;
+  display:block;
+  text-align:center;
+  padding-top:6px;
+  height:34px;
+}
+
+header ul a:hover {
+  color:#999;
+}
+
+header ul a:active {
+  background-color:#f0f0f0;
+}
+
+strong {
+  color:#222;
+  font-weight:500;
+}
+
+header ul li + li + li {
+  border-right:none;
+  width:89px;
+}
+
+header ul a strong {
+  font-size:14px;
+  display:block;
+  color:#222;
+}
+
+section {
+  width:500px;
+  float:right;
+  padding-bottom:50px;
+}
+
+small {
+  font-size:11px;
+}
+
+hr {
+  border:0;
+  background:#e5e5e5;
+  height:1px;
+  margin:0 0 20px;
+}
+
+footer {
+  width:270px;
+  float:left;
+  position:fixed;
+  bottom:50px;
+  -webkit-font-smoothing:subpixel-antialiased;
+}
+
+@media print, screen and (max-width: 960px) {
+
+  div.wrapper {
+    width:auto;
+    margin:0;
+  }
+
+  header, section, footer {
+    float:none;
+    position:static;
+    width:auto;
+  }
+
+  header {
+    padding-right:320px;
+  }
+
+  section {
+    border:1px solid #e5e5e5;
+    border-width:1px 0;
+    padding:20px 0;
+    margin:0 0 20px;
+  }
+
+  header a small {
+    display:inline;
+  }
+
+  header ul {
+    position:absolute;
+    right:50px;
+    top:52px;
+  }
+}
+
+
+
+@media print, screen and (max-width: 720px) {
+  body {
+    word-wrap:break-word;
+  }
+
+  header {
+    padding:0;
+  }
+
+  header ul, header p.view {
+    position:static;
+  }
+
+  pre, code {
+    word-wrap:normal;
+  }
+}
+
+@media print, screen and (max-width: 480px) {
+  body {
+    padding:15px;
+  }
+
+  header ul {
+    width:99%;
+  }
+
+  header li, header ul li + li + li {
+    width:33%;
+  }
+}
+
+@media print {
+  body {
+    padding:0.4in;
+    font-size:12pt;
+    color:#444;
+  }
+}
 	</style>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="-/js/modernizr.custom.95508.js"></script>
@@ -409,57 +411,67 @@
 <body>
 	
 	
+	<div class="wrapper">
 	
-		<div class="centered">
 	
 	<header>
 		<hgroup>
 			<h1><a href="/">RatioSTRONG</a></h1>
 			<h2>New Math, Same Web</h2>
+
+			<p>Simple calculator for responsive web design to determine the widths of elements within the context of their container or parent element.<p> 
 		</hgroup>
 	</header>
 	
+	<section>
 		
 	<form id="ratio">
 		
-				<div>
-					<label for="dividend">Target</label>
-					<input type="text" id="dividend" value="460" />
+				<div class="ratio__block">
+					<h3><label for="dividend">Target</label></h3>
+					<input type="text" id="dividend" value="460" /> 
 				</div>
 
-				<p>&divide;</p>
-
-				<div>
-					<label for="divisor">Context</label>
-					<input id="divisor" value="" list="breakpoints" autofocus  />
+				<div class="ratio__block">
+					<h3>&divide; <label for="divisor">Context</label> </h3>
+					<input type="text" id="divisor" value="" list="breakpoints" autofocus  />
 					<datalist id="breakpoints">
 						<option value="480">
 						<option value="800">
 						<option value="1200">
-					</datalist>
+					</datalist> 
 				</div>
 
-				<p>=</p>
-
-				<div class="last">
-					<label for="quotient">Result</label>
+				<div class="last ratio__block">
+					<h3>= <label for="quotient">Result</label></h3>
 					<input type="text" id="quotient" value="" /></td>
 				</div>
-		
-		<input type="reset" value="Clear" />
-		<input type="submit" value="Enter" />
 
-		<textarea id="cssOutput">
-element {
-	/* width is --> Result = Target / Context */
-	width: 98.1%; /* 981 / 1000 */ 
-}
-		</textarea>
+				<div class="last ratio__block">
+					<input type="reset" value="Reset" />
+					<input type="submit" value="Compute" />
+				</div>
+
+				<div class="last ratio__block">
+						<textarea id="cssOutput" rows="4">
+				element {
+					/* width is --> Result = Target / Context */
+					width: 98.1%; /* 981 / 1000 */ 
+				}
+						</textarea>
+				</div>
 		<div id="container">
 			<input id="copy" type="button" value="Copy" />
 			<span id="copied">Copied to clipboard</span>
 		</div>
 	</form>
+</section>
+
+<footer>
+
+<p>Made by <a href="http://Christopher.org">Christopher Schmitt</a></p>
+
+</footer>
 
 </div>
 <script type="text/javascript">
